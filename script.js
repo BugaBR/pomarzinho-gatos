@@ -143,7 +143,7 @@ function drawCoin(coin) {
   const rise = 74 * (1 - (1 - t) ** 2);
   const x = coin.x + Math.sin(t * 5 + coin.seed) * 24;
   const y = coin.y - rise;
-  const r = 11 * (1 - t * 0.2);
+  const r = 14 * (1 - t * 0.2);
   ctx.save();
   ctx.globalAlpha = 1 - t;
   ctx.translate(x, y);
@@ -157,7 +157,7 @@ function drawCoin(coin) {
   ctx.beginPath(); ctx.arc(0, 0, r - 3, 0, Math.PI * 2); ctx.fill();
   if (catMark.complete && catMark.naturalWidth) {
     ctx.globalCompositeOperation = "screen";
-    ctx.drawImage(catMark, -6, -6, 12, 12);
+    ctx.drawImage(catMark, -10, -10, 20, 20);
   } else {
     ctx.fillStyle = "#fff0a2";
     ctx.font = "bold 12px Arial";
@@ -233,7 +233,9 @@ function farmAt(clientX, clientY) {
   clicks += 1;
   playMeow();
   sparks.push({ x, y: Math.max(12, y), start: performance.now(), seed: Math.random() * 9 });
-  coins.push({ x, y: Math.max(12, y), start: performance.now(), seed: Math.random() * 9 });
+  for (let i = 0; i < 2; i++) {
+    coins.push({ x: x + (i ? -7 : 7), y: Math.max(12, y), start: performance.now(), seed: Math.random() * 9 });
+  }
   if (!animationFrame) animationFrame = requestAnimationFrame(draw);
 
   if (clicks >= revealAt) {
