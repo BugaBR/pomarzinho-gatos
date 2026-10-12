@@ -1,4 +1,5 @@
 const canvas = document.querySelector("#field");
+const scene = document.querySelector(".scene");
 const ctx = canvas.getContext("2d");
 const reveal = document.querySelector("#reveal");
 const shade = document.querySelector("#shade");
@@ -261,7 +262,7 @@ canvas.addEventListener("pointermove", (event) => {
   if (!animationFrame) draw();
 });
 canvas.addEventListener("pointerleave", () => { pointer = null; if (!animationFrame) draw(); });
-canvas.addEventListener("pointerdown", (event) => farmAt(event.clientX, event.clientY));
+scene.addEventListener("pointerdown", (event) => farmAt(event.clientX, event.clientY));
 canvas.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
