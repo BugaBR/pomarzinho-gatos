@@ -13,7 +13,7 @@ html, body { width: 100%; height: 100%; margin: 0; }
 body { overflow: hidden; background: var(--bg); color: var(--light); }
 .scene { position: relative; width: 100%; height: 100vh; height: 100dvh; min-height: 420px; overflow: hidden; background: var(--bg); }
 .brand { position: absolute; top: 23.5%; left: 50%; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); text-align: center; user-select: none; }
-.brand-icon { width: 48px; height: 48px; margin-bottom: 10px; object-fit: contain; image-rendering: pixelated; }
+.brand-icon { width: 48px; height: 48px; margin-bottom: 10px; object-fit: contain; image-rendering: pixelated; mix-blend-mode: screen; }
 .brand h1 { margin: 0; font-size: 52px; line-height: .95; font-weight: 700; letter-spacing: -3px; }
 .tagline { margin: 34px 0 0; color: #5b5a60; font-size: 14px; font-weight: 600; letter-spacing: .01em; }
 .instruction { position: absolute; top: 66.3%; left: 50%; z-index: 2; margin: 0; transform: translate(-50%, -50%); color: #55545b; font-size: 11px; font-weight: 700; letter-spacing: .13em; white-space: nowrap; user-select: none; pointer-events: none; }
