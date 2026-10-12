@@ -8,7 +8,7 @@ Open `index.html` in a browser. No dependencies are required.
 
 ## Token contract address
 
-Set `TOKEN_CA` near the top of `script.js` to the contract address you want to show in the popup. The field stays blank until an address is provided, and the Copy button becomes available when it is set.
+Set `TOKEN_CA` near the top of `script.js` to the contract address you want to show in the popup. Set `PUMP_URL` next to `TOKEN_CA` in `script.js` to activate the Pump.fun button with the direct coin link. Both buttons stay disabled until their matching values are configured.
 
 ## GitHub Pages
 
