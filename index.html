@@ -25,18 +25,18 @@
       <audio id="meow-audio" src="assets/miau-01.mp3" preload="auto"></audio>
 
       <section class="reveal" id="reveal" role="dialog" aria-modal="true" aria-labelledby="reveal-title" tabindex="-1" hidden>
-        <div class="pixel-cat" aria-hidden="true">
+        <div class="popup-icon" aria-hidden="true">
           <img src="assets/cat-silhouette.png" alt="" />
         </div>
-        <p class="found-label">YOU FOUND</p>
-        <h2 id="reveal-title">a little cat</h2>
-        <p class="cat-name" id="cat-name">Mimi</p>
-        <label class="ca-label" for="token-ca">TOKEN CONTRACT ADDRESS</label>
+        <h2 id="reveal-title">You found it.</h2>
+        <p class="popup-copy">You farmed the whole field. Meet <span class="cat-name" id="cat-name">Mimi</span>, a hidden friend in FARMCAT.</p>
         <div class="ca-row">
-          <input id="token-ca" type="text" placeholder="Token CA goes here" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Token contract address" />
-          <button id="copy-ca" type="button" aria-label="Copy token contract address">COPY</button>
+          <input id="token-ca" type="text" placeholder="Token CA will appear here" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Token contract address" />
+          <button id="copy-ca" type="button" aria-label="Copy token contract address">Copy</button>
         </div>
         <p class="copy-status" id="copy-status" aria-live="polite"></p>
+        <button class="trade-button" id="trade-button" type="button" disabled>TRADE ON PUMP.FUN</button>
+        <p class="disclaimer">An experiment. It can go to zero. FARMCAT makes no promises.</p>
       </section>
       <div class="shade" id="shade" hidden></div>
     </main>

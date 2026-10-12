@@ -21,21 +21,23 @@ body { overflow: hidden; background: var(--bg); color: var(--light); }
 .field:focus-visible { outline: 1px dashed #a19eaa; outline-offset: -5px; }
 .shade { position: absolute; inset: 0; z-index: 5; background: rgba(7, 7, 9, .75); backdrop-filter: blur(2px); }
 .reveal[hidden], .shade[hidden] { display: none; }
-.reveal { position: absolute; z-index: 6; top: 50%; left: 50%; width: min(360px, calc(100% - 32px)); padding: 24px 22px 22px; transform: translate(-50%, -50%); border: 1px solid #4e4c56; background: #1b1b1e; text-align: center; box-shadow: 0 18px 65px #0009; animation: appear .22s ease-out; }
-.pixel-cat { width: 112px; height: 112px; margin: 0 auto 10px; }
-.pixel-cat img { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
-.found-label { margin: 0 0 6px; color: #797781; font-size: 10px; font-weight: 700; letter-spacing: .15em; }
-.reveal h2 { margin: 0; color: #efedf1; font-size: 25px; font-weight: 700; letter-spacing: -.7px; }
-.cat-name { margin: 6px 0 17px; color: #a8a5b1; font-size: 13px; }
-.ca-label { display: block; margin: 0 0 7px; color: #797781; text-align: left; font-size: 9px; font-weight: 700; letter-spacing: .12em; }
-.ca-row { display: flex; width: 100%; gap: 6px; }
-.ca-row input { min-width: 0; flex: 1; border: 1px solid #4a4851; border-radius: 0; outline: 0; background: #131315; color: #e7e5ec; padding: 10px 9px; font: 11px Arial, Helvetica, sans-serif; }
-.ca-row input::placeholder { color: #67656e; }
-.ca-row input:focus { border-color: #8d8998; }
-.ca-row button { border: 1px solid #55525d; background: #242428; color: #d7d5dc; padding: 0 10px; font: 700 9px Arial, Helvetica, sans-serif; letter-spacing: .06em; cursor: pointer; }
-.ca-row button:hover:not(:disabled) { background: #302f35; border-color: #7a7783; }
-.ca-row button:disabled { color: #66646d; cursor: default; }
-.copy-status { min-height: 13px; margin: 6px 0 5px; color: #a8a5b1; font-size: 10px; }
+.reveal { position: absolute; z-index: 6; top: 50%; left: 50%; width: min(432px, calc(100% - 32px)); padding: 22px 15px 17px; transform: translate(-50%, -50%); border: 1px solid #292929; border-radius: 14px; background: #242424; text-align: left; box-shadow: 0 18px 65px #0009; animation: appear .22s ease-out; }
+.popup-icon { width: 56px; height: 56px; margin: 0 0 14px; display: grid; place-items: center; overflow: hidden; border: 1px solid #f26a7e; border-radius: 50%; background: #101012; }
+.popup-icon img { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+.reveal h2 { margin: 0 0 6px; color: #efedf1; font-size: 18px; line-height: 1.3; font-weight: 700; letter-spacing: -.25px; }
+.popup-copy { margin: 0 0 16px; color: #aaa9ad; font-size: 14px; line-height: 1.5; }
+.cat-name { color: #dedde1; font-weight: 600; }
+.ca-row { display: flex; width: 100%; height: 48px; align-items: center; gap: 4px; padding: 5px 6px 5px 11px; border-radius: 11px; background: #191919; }
+.ca-row input { min-width: 0; flex: 1; height: 100%; padding: 0; border: 0; outline: 0; background: transparent; color: #e7e5ec; font: 600 11px Arial, Helvetica, sans-serif; }
+.ca-row input::placeholder { color: #aaa9ad; opacity: 1; }
+.ca-row button { height: 34px; flex: 0 0 auto; padding: 0 12px; border: 0; border-radius: 9px; background: #414141; color: #eeedf0; font: 700 12px Arial, Helvetica, sans-serif; cursor: pointer; }
+.ca-row button:hover:not(:disabled) { background: #505050; }
+.ca-row button:disabled { color: #aaa9ad; cursor: default; }
+.copy-status { min-height: 0; margin: 0; color: #a8a5b1; font-size: 10px; }
+.trade-button { display: block; width: 100%; min-height: 44px; margin-top: 12px; border: 0; border-radius: 14px; background: #eeece8; color: #161616; font: 700 13px Arial, Helvetica, sans-serif; letter-spacing: .09em; cursor: pointer; }
+.trade-button:hover:not(:disabled) { background: #fff; }
+.trade-button:disabled { opacity: .62; cursor: default; }
+.disclaimer { margin: 14px 0 0; color: #8b898d; font-size: 12px; line-height: 1.5; }
 @keyframes appear { from { opacity: 0; transform: translate(-50%, -47%); } to { opacity: 1; transform: translate(-50%, -50%); } }
 
 @media (max-width: 600px) {
@@ -44,8 +46,7 @@ body { overflow: hidden; background: var(--bg); color: var(--light); }
   .tagline { margin-top: 25px; font-size: 12px; }
   .instruction { top: 61%; font-size: 9px; }
   .field { height: 30vh; height: clamp(185px, 30vh, 220px); }
-  .reveal { padding: 22px 17px 19px; }
-  .pixel-cat { width: 98px; height: 98px; }
+  .reveal { padding: 20px 15px 16px; }
 }
 
 @media (max-height: 520px) {

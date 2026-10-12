@@ -8,10 +8,12 @@ const catName = document.querySelector("#cat-name");
 const tokenCa = document.querySelector("#token-ca");
 const copyButton = document.querySelector("#copy-ca");
 const copyStatus = document.querySelector("#copy-status");
+const tradeButton = document.querySelector("#trade-button");
 const unit = 12;
 const treeSlots = 14;
 const cats = ["Mimi", "Amora", "Nino", "Pipoca", "Chispa"];
 const TOKEN_CA = "";
+const PUMP_URL = "";
 let width = 0;
 let height = 0;
 let scale = 1;
@@ -25,6 +27,7 @@ let sparks = [];
 tokenCa.value = TOKEN_CA;
 tokenCa.readOnly = true;
 copyButton.disabled = !TOKEN_CA;
+tradeButton.disabled = !PUMP_URL;
 
 function block(x, y, w, h, color, outline = true) {
   ctx.fillStyle = color;
@@ -207,6 +210,9 @@ canvas.addEventListener("keydown", (event) => {
     const rect = canvas.getBoundingClientRect();
     farmAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
   }
+});
+tradeButton.addEventListener("click", () => {
+  if (PUMP_URL) window.open(PUMP_URL, "_blank", "noopener,noreferrer");
 });
 copyButton.addEventListener("click", async () => {
   if (!tokenCa.value) return;
