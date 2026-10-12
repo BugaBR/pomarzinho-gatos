@@ -1,11 +1,15 @@
-# Pomarzinho
+# FARMCAT
 
-Um campo interativo em pixel art. Clique na parte de baixo da tela para cuidar das árvores; uma visita encontra um gatinho depois de uma quantidade aleatória de cliques.
+A tiny pixel-art farm. Click the field to help the trees grow; their height stops at the final stage. A cat appears after a different, randomly chosen number of clicks each session. Every click plays a short synthesized cat meow.
 
-## Rodar localmente
+## Run locally
 
-Abra `index.html` no navegador. Não precisa instalar dependências.
+Open `index.html` in a browser. No dependencies are required.
 
-## Publicar com GitHub Pages
+## Token contract address
 
-O fluxo em `.github/workflows/pages.yml` publica o site a cada envio para `main`. Em **Settings → Pages**, deixe **Build and deployment → Source** em **GitHub Actions**. O endereço do site aparece nessa tela após a publicação.
+Set `TOKEN_CA` near the top of `script.js` to the contract address you want to show in the popup. The field stays blank until an address is provided, and the Copy button becomes available when it is set.
+
+## GitHub Pages
+
+The workflow in `.github/workflows/pages.yml` publishes the site whenever `main` is updated. Under **Settings → Pages**, keep **Build and deployment → Source** set to **GitHub Actions**.

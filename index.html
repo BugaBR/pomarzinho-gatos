@@ -4,27 +4,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#111112" />
-    <meta name="description" content="Um campo tranquilo para cultivar árvores e encontrar um gatinho escondido." />
-    <title>pomar — clique no campo para cultivar</title>
+    <meta name="description" content="A tiny pixel farm. Grow trees and discover a cat hiding in the field." />
+    <title>FARMCAT — click the field to farm</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main class="scene">
-      <header class="brand" aria-label="pomar">
+      <header class="brand" aria-label="FARMCAT">
         <svg class="brand-sprout" viewBox="0 0 32 48" aria-hidden="true">
           <path d="M15 8h6v7h-6zM9 15h6v6H9zM21 15h6v6h-6zM4 22h6v6H4zM12 22h6v6h-6zM22 22h6v6h-6zM11 30h6v6h-6zM21 30h6v6h-6zM15 36h6v9h-6z" fill="currentColor" />
         </svg>
-        <h1>pomar</h1>
-        <p class="tagline">um cantinho para cultivar</p>
+        <h1>FARMCAT</h1>
+        <p class="tagline">a tiny farm with a hidden friend</p>
       </header>
 
-      <p class="instruction" id="instruction">CLIQUE NO CAMPO PARA CULTIVAR</p>
-      <canvas class="field" id="field" aria-label="Campo de cultivo. Clique para cuidar das árvores." role="button" tabindex="0">
-        Seu navegador não oferece suporte ao campo interativo.
+      <p class="instruction" id="instruction">CLICK THE FIELD TO FARM</p>
+      <canvas class="field" id="field" aria-label="Farm field. Click to grow the trees." role="button" tabindex="0">
+        Your browser does not support the interactive field.
       </canvas>
 
       <section class="reveal" id="reveal" role="dialog" aria-modal="true" aria-labelledby="reveal-title" hidden>
-        <button class="close" id="close-reveal" type="button" aria-label="Fechar">×</button>
+        <button class="close" id="close-reveal" type="button" aria-label="Close">×</button>
         <div class="pixel-cat" aria-hidden="true">
           <svg viewBox="0 0 128 128" shape-rendering="crispEdges">
             <rect x="28" y="16" width="16" height="16" fill="#aeb0c4"/><rect x="36" y="24" width="16" height="16" fill="#d7d8df"/>
@@ -40,10 +40,16 @@
             <rect x="88" y="92" width="16" height="8" fill="#c9cad5"/><rect x="100" y="88" width="12" height="8" fill="#c9cad5"/><rect x="108" y="80" width="8" height="12" fill="#c9cad5"/>
           </svg>
         </div>
-        <p class="found-label">VOCÊ ENCONTROU</p>
-        <h2 id="reveal-title">um gatinho</h2>
+        <p class="found-label">YOU FOUND</p>
+        <h2 id="reveal-title">a little cat</h2>
         <p class="cat-name" id="cat-name">Mimi</p>
-        <button class="keep-going" id="keep-going" type="button">continuar cultivando</button>
+        <label class="ca-label" for="token-ca">TOKEN CONTRACT ADDRESS</label>
+        <div class="ca-row">
+          <input id="token-ca" type="text" placeholder="Token CA goes here" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Token contract address" />
+          <button id="copy-ca" type="button" aria-label="Copy token contract address">COPY</button>
+        </div>
+        <p class="copy-status" id="copy-status" aria-live="polite"></p>
+        <button class="keep-going" id="keep-going" type="button">KEEP FARMING</button>
       </section>
       <div class="shade" id="shade" hidden></div>
     </main>
