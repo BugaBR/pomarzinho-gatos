@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f2e9" />
+    <meta name="description" content="Cuide do seu pomar e descubra quem está escondido entre as árvores." />
+    <title>Pomarzinho — um cantinho cheio de surpresas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#inicio" aria-label="Pomarzinho, início">
+          <span class="brand-mark" aria-hidden="true">✿</span>
+          <span>pomarzinho<span class="brand-dot">.</span></span>
+        </a>
+        <div class="top-note"><span class="live-dot"></span> um lugar para desacelerar</div>
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false" title="Ativar sons">
+          <span aria-hidden="true">♪</span><span class="sound-label">som desligado</span>
+        </button>
+      </header>
+
+      <section class="hero" id="inicio" aria-labelledby="headline">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>✳</span> SEU PEDACINHO DE NATUREZA</p>
+          <h1 id="headline">Um clique,<br />uma nova <em>vida.</em></h1>
+          <p class="intro">Cuide do pomar com carinho. Tem uma surpresa ronronando por aqui — será que você encontra?</p>
+          <div class="howto"><span class="howto-icon">↓</span><span><strong>Toque na terra</strong><br />e veja seu pomar crescer</span></div>
+        </div>
+
+        <div class="farm-card" aria-label="Pomar interativo">
+          <div class="farm-card-head">
+            <div><span class="tiny-label">SEU POMAR</span><h2>Um dia de cada vez</h2></div>
+            <div class="sun-badge" aria-label="Dia ensolarado">☀ <span>18°</span></div>
+          </div>
+          <div class="skyline" aria-hidden="true"><span class="cloud cloud-a"></span><span class="cloud cloud-b"></span><span class="hill hill-back"></span><span class="hill hill-front"></span></div>
+          <div class="orchard" id="orchard" role="group" aria-label="Toque em qualquer canteiro para plantar uma árvore"></div>
+          <div class="farm-card-foot">
+            <div class="progress-block"><div class="progress-top"><span>O pomar está florescendo</span><span id="progress-count">0 / 8</span></div><div class="progress-track"><span id="progress-fill"></span></div></div>
+            <span class="seed-count" title="Árvores plantadas"><span aria-hidden="true">♧</span> <b id="tree-count">0</b></span>
+          </div>
+          <p class="farm-hint" id="farm-hint" aria-live="polite">Escolha um canteiro para começar</p>
+        </div>
+      </section>
+
+      <section class="garden-note" aria-label="Sobre o pomar">
+        <span class="note-flower" aria-hidden="true">✿</span>
+        <p><strong>Sem pressa.</strong> Toda coisa bonita cresce no seu tempo.</p>
+        <span class="note-sparkle" aria-hidden="true">✳</span>
+      </section>
+
+      <footer class="footer"><span>feito com carinho e um pouquinho de terra 🌱</span><button id="restart" type="button">começar de novo <span aria-hidden="true">↺</span></button></footer>
+    </main>
+
+    <dialog class="discovery" id="discovery" aria-labelledby="discovery-title">
+      <button class="close-button" id="close-modal" type="button" aria-label="Fechar surpresa">×</button>
+      <div class="confetti confetti-one" aria-hidden="true">✳</div><div class="confetti confetti-two" aria-hidden="true">✿</div>
+      <div class="cat-art" aria-hidden="true">
+        <svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="112" cy="185" rx="68" ry="12" fill="#D8D0BC" opacity=".45"/>
+          <path d="M157 143c36 0 43-32 28-44-9-7-20-3-22 7" stroke="#B96F4C" stroke-width="11" stroke-linecap="round"/>
+          <path d="M60 139c0-33 23-57 54-57s55 24 55 57v20c0 13-11 23-24 23H84c-13 0-24-10-24-23v-20Z" fill="#E6A77D"/>
+          <path d="m69 101-4-43c-1-9 10-14 16-7l24 26M153 101l5-43c1-9-10-14-16-7l-24 26" fill="#E6A77D" stroke="#C9815D" stroke-width="5" stroke-linejoin="round"/>
+          <path d="m75 89-2-26 17 18m53 8 3-26-18 18" fill="#E8B1AF"/>
+          <path d="M85 130c0-5 4-9 9-9s9 4 9 9m22 0c0-5 4-9 9-9s9 4 9 9" stroke="#493D34" stroke-width="5" stroke-linecap="round"/>
+          <path d="m106 142 7 5 7-5" fill="#B96969" stroke="#B96969" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M113 147c-2 8-10 10-15 7m15-7c2 8 10 10 15 7" stroke="#493D34" stroke-width="3" stroke-linecap="round"/>
+          <path d="m102 144-23-4m23 10-25 5m48-11 23-4m-23 10 25 5" stroke="#8A5A48" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M88 165c13 7 34 7 49-1" stroke="#F4D8C1" stroke-width="5" stroke-linecap="round"/>
+          <path d="M79 91c10 4 16 4 24 0m21 0c8 4 14 4 23 0" stroke="#C9815D" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="61" cy="124" r="5" fill="#F2D777"/><circle cx="177" cy="88" r="4" fill="#F2D777"/>
+          <path d="m43 96 2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6Zm134 76 2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6Z" fill="#ECC869"/>
+        </svg>
+      </div>
+      <p class="modal-kicker">OLHA SÓ QUEM APARECEU</p>
+      <h2 id="discovery-title">Você encontrou<br /><em>um gatinho!</em></h2>
+      <p class="cat-caption">Ele estava tirando uma soneca<br />à sombra do seu pomar 🐾</p>
+      <button class="continue-button" id="continue" type="button">Que fofura! <span aria-hidden="true">♡</span></button>
+      <p class="modal-small">surpresas boas também crescem por aqui</p>
+    </dialog>
+    <div class="modal-backdrop" id="backdrop"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
