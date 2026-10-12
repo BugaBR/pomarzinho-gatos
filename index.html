@@ -22,23 +22,11 @@
       <canvas class="field" id="field" aria-label="Farm field. Click to grow the trees." role="button" tabindex="0">
         Your browser does not support the interactive field.
       </canvas>
+      <audio id="meow-audio" src="assets/miau-01.mp3" preload="auto"></audio>
 
-      <section class="reveal" id="reveal" role="dialog" aria-modal="true" aria-labelledby="reveal-title" hidden>
-        <button class="close" id="close-reveal" type="button" aria-label="Close">×</button>
+      <section class="reveal" id="reveal" role="dialog" aria-modal="true" aria-labelledby="reveal-title" tabindex="-1" hidden>
         <div class="pixel-cat" aria-hidden="true">
-          <svg viewBox="0 0 128 128" shape-rendering="crispEdges">
-            <rect x="28" y="16" width="16" height="16" fill="#aeb0c4"/><rect x="36" y="24" width="16" height="16" fill="#d7d8df"/>
-            <rect x="84" y="24" width="16" height="16" fill="#d7d8df"/><rect x="88" y="16" width="16" height="16" fill="#aeb0c4"/>
-            <rect x="28" y="40" width="72" height="56" fill="#c9cad5"/>
-            <rect x="20" y="48" width="16" height="40" fill="#c9cad5"/><rect x="92" y="48" width="16" height="40" fill="#c9cad5"/>
-            <rect x="36" y="32" width="16" height="8" fill="#e3b6bf"/><rect x="84" y="32" width="16" height="8" fill="#e3b6bf"/>
-            <rect x="40" y="56" width="8" height="8" fill="#27272b"/><rect x="80" y="56" width="8" height="8" fill="#27272b"/>
-            <rect x="60" y="68" width="8" height="8" fill="#b98291"/><rect x="52" y="76" width="8" height="8" fill="#27272b"/><rect x="68" y="76" width="8" height="8" fill="#27272b"/>
-            <rect x="4" y="56" width="24" height="4" fill="#b7b8c5"/><rect x="8" y="68" width="20" height="4" fill="#b7b8c5"/>
-            <rect x="100" y="56" width="24" height="4" fill="#b7b8c5"/><rect x="100" y="68" width="20" height="4" fill="#b7b8c5"/>
-            <rect x="36" y="92" width="56" height="16" fill="#c9cad5"/><rect x="44" y="104" width="16" height="12" fill="#aeb0c4"/><rect x="76" y="104" width="16" height="12" fill="#aeb0c4"/>
-            <rect x="88" y="92" width="16" height="8" fill="#c9cad5"/><rect x="100" y="88" width="12" height="8" fill="#c9cad5"/><rect x="108" y="80" width="8" height="12" fill="#c9cad5"/>
-          </svg>
+          <img src="assets/cat-silhouette.png" alt="" />
         </div>
         <p class="found-label">YOU FOUND</p>
         <h2 id="reveal-title">a little cat</h2>
@@ -49,7 +37,6 @@
           <button id="copy-ca" type="button" aria-label="Copy token contract address">COPY</button>
         </div>
         <p class="copy-status" id="copy-status" aria-live="polite"></p>
-        <button class="keep-going" id="keep-going" type="button">KEEP FARMING</button>
       </section>
       <div class="shade" id="shade" hidden></div>
     </main>

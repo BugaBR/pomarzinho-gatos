@@ -2,6 +2,7 @@ const canvas = document.querySelector("#field");
 const ctx = canvas.getContext("2d");
 const reveal = document.querySelector("#reveal");
 const shade = document.querySelector("#shade");
+const meowAudio = document.querySelector("#meow-audio");
 const instruction = document.querySelector("#instruction");
 const catName = document.querySelector("#cat-name");
 const tokenCa = document.querySelector("#token-ca");
@@ -20,8 +21,6 @@ let revealAt = 12 + Math.floor(Math.random() * 28);
 let animationFrame = 0;
 let trees = [];
 let sparks = [];
-let meowContext;
-let lastMeow = 0;
 
 tokenCa.value = TOKEN_CA;
 tokenCa.readOnly = true;
@@ -167,49 +166,9 @@ function resize() {
   draw();
 }
 
-async function playMeow() {
-  const nowMs = performance.now();
-  if (nowMs - lastMeow < 100) return;
-  lastMeow = nowMs;
-  meowContext ??= new (window.AudioContext || window.webkitAudioContext)();
-  if (meowContext.state === "suspended") await meowContext.resume();
-
-  const now = meowContext.currentTime;
-  const duration = 0.32;
-  const pitch = 570 + Math.random() * 100;
-  const voice = meowContext.createOscillator();
-  const overtone = meowContext.createOscillator();
-  const formant = meowContext.createBiquadFilter();
-  const voiceGain = meowContext.createGain();
-  const overtoneGain = meowContext.createGain();
-  const master = meowContext.createGain();
-
-  voice.type = "sawtooth";
-  voice.frequency.setValueAtTime(pitch, now);
-  voice.frequency.exponentialRampToValueAtTime(pitch * 0.57, now + 0.13);
-  voice.frequency.exponentialRampToValueAtTime(pitch * 0.82, now + duration);
-  overtone.type = "sine";
-  overtone.frequency.setValueAtTime(pitch * 2.02, now);
-  overtone.frequency.exponentialRampToValueAtTime(pitch * 1.4, now + 0.13);
-  overtone.frequency.exponentialRampToValueAtTime(pitch * 1.8, now + duration);
-  formant.type = "bandpass";
-  formant.frequency.setValueAtTime(1050, now);
-  formant.frequency.exponentialRampToValueAtTime(720, now + 0.16);
-  formant.frequency.exponentialRampToValueAtTime(920, now + duration);
-  formant.Q.value = 1.4;
-  master.gain.setValueAtTime(0.0001, now);
-  master.gain.exponentialRampToValueAtTime(0.11, now + 0.025);
-  master.gain.setValueAtTime(0.09, now + 0.12);
-  master.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-  voiceGain.gain.value = 0.7;
-  overtoneGain.gain.value = 0.22;
-  voice.connect(voiceGain).connect(formant);
-  overtone.connect(overtoneGain).connect(formant);
-  formant.connect(master).connect(meowContext.destination);
-  voice.start(now);
-  overtone.start(now);
-  voice.stop(now + duration + 0.02);
-  overtone.stop(now + duration + 0.02);
+function playMeow() {
+  meowAudio.currentTime = 0;
+  meowAudio.play().catch(() => {});
 }
 
 function farmAt(clientX, clientY) {
@@ -220,7 +179,7 @@ function farmAt(clientX, clientY) {
   const tree = trees.reduce((closest, current) => Math.abs(current.x - x) < Math.abs(closest.x - x) ? current : closest, trees[0]);
   tree.stage = Math.min(3, tree.stage + 1);
   clicks += 1;
-  playMeow().catch(() => {});
+  playMeow();
   sparks.push({ x, y: Math.max(12, y), start: performance.now(), seed: Math.random() * 9 });
   if (!animationFrame) animationFrame = requestAnimationFrame(draw);
 
@@ -237,14 +196,9 @@ function showCat() {
   catName.textContent = cats[Math.floor(Math.random() * cats.length)];
   shade.hidden = false;
   reveal.hidden = false;
-  document.querySelector("#close-reveal").focus();
+  reveal.focus();
 }
 
-function closeCat() {
-  reveal.hidden = true;
-  shade.hidden = true;
-  canvas.focus();
-}
 
 canvas.addEventListener("pointerdown", (event) => farmAt(event.clientX, event.clientY));
 canvas.addEventListener("keydown", (event) => {
@@ -254,9 +208,6 @@ canvas.addEventListener("keydown", (event) => {
     farmAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
   }
 });
-document.querySelector("#close-reveal").addEventListener("click", closeCat);
-document.querySelector("#keep-going").addEventListener("click", closeCat);
-shade.addEventListener("click", closeCat);
 copyButton.addEventListener("click", async () => {
   if (!tokenCa.value) return;
   try {
