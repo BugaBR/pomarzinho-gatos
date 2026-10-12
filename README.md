@@ -1,16 +1,11 @@
 # Pomarzinho
 
-Um mini jogo de pomar feito com HTML, CSS e JavaScript puro. Clique nos canteiros para ver as árvores crescerem; após oito cuidados, aparece uma surpresa: um gatinho ilustrado.
+Um campo interativo em pixel art. Clique na parte de baixo da tela para cuidar das árvores; uma visita encontra um gatinho depois de uma quantidade aleatória de cliques.
 
 ## Rodar localmente
 
-Abra `index.html` no navegador. Não precisa instalar dependências nem configurar servidor.
+Abra `index.html` no navegador. Não precisa instalar dependências.
 
 ## Publicar com GitHub Pages
 
-1. Envie os arquivos deste diretório para a branch `main` de um repositório GitHub.
-2. No repositório, abra **Settings → Pages** e em **Build and deployment → Source** selecione **GitHub Actions**.
-3. O fluxo em `.github/workflows/pages.yml` publica o site automaticamente a cada envio para `main`.
-4. O endereço do site aparecerá na tela **Settings → Pages** depois da primeira publicação.
-
-O site é estático e não coleta dados nem conecta carteira ou token.
+O fluxo em `.github/workflows/pages.yml` publica o site a cada envio para `main`. Em **Settings → Pages**, deixe **Build and deployment → Source** em **GitHub Actions**. O endereço do site aparece nessa tela após a publicação.
