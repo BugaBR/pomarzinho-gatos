@@ -27,7 +27,7 @@ let sparks = [];
 tokenCa.value = TOKEN_CA;
 tokenCa.readOnly = true;
 copyButton.disabled = !TOKEN_CA;
-tradeButton.disabled = !PUMP_URL;
+tradeButton.disabled = !TOKEN_CA || !PUMP_URL;
 
 function block(x, y, w, h, color, outline = true) {
   ctx.fillStyle = color;
