@@ -23,6 +23,10 @@ let revealAt = 12 + Math.floor(Math.random() * 28);
 let animationFrame = 0;
 let trees = [];
 let sparks = [];
+let coins = [];
+let pointer = null;
+const catMark = new Image();
+catMark.src = "assets/cat-silhouette.png";
 
 tokenCa.value = TOKEN_CA;
 tokenCa.readOnly = true;
@@ -134,6 +138,49 @@ function drawSpark(spark) {
   return t < 1;
 }
 
+function drawCoin(coin) {
+  const t = Math.min(1, (performance.now() - coin.start) / 1050);
+  const rise = 74 * (1 - (1 - t) ** 2);
+  const x = coin.x + Math.sin(t * 5 + coin.seed) * 24;
+  const y = coin.y - rise;
+  const r = 11 * (1 - t * 0.2);
+  ctx.save();
+  ctx.globalAlpha = 1 - t;
+  ctx.translate(x, y);
+  ctx.rotate(Math.sin(t * 9 + coin.seed) * 0.22);
+  ctx.fillStyle = "#8b571e";
+  ctx.beginPath(); ctx.arc(1, 2, r + 1, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = "#f1c75b";
+  ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = "#fff0a2"; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = "#b47a2d";
+  ctx.beginPath(); ctx.arc(0, 0, r - 3, 0, Math.PI * 2); ctx.fill();
+  if (catMark.complete && catMark.naturalWidth) {
+    ctx.globalCompositeOperation = "screen";
+    ctx.drawImage(catMark, -6, -6, 12, 12);
+  } else {
+    ctx.fillStyle = "#fff0a2";
+    ctx.font = "bold 12px Arial";
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillText("F", 0, 1);
+  }
+  ctx.restore();
+  return t < 1;
+}
+
+function drawPickaxe() {
+  if (!pointer || pointer.touch || found) return;
+  const { x, y } = pointer;
+  ctx.save();
+  ctx.translate(x + 8, y - 8);
+  ctx.rotate(-0.55);
+  block(-2, -1, 5, 24, "#b57a3a", false);
+  block(-11, -5, 9, 5, "#d8d7dc", false);
+  block(-7, -10, 15, 5, "#eeedf0", false);
+  block(8, -5, 8, 5, "#aaa8b1", false);
+  ctx.restore();
+}
+
 function draw() {
   ctx.clearRect(0, 0, width, height);
   const base = height - unit * 2;
@@ -147,7 +194,9 @@ function draw() {
 
   trees.forEach((tree) => drawTree(tree, base));
   sparks = sparks.filter(drawSpark);
-  if (sparks.length) animationFrame = requestAnimationFrame(draw);
+  coins = coins.filter(drawCoin);
+  drawPickaxe();
+  if (sparks.length || coins.length) animationFrame = requestAnimationFrame(draw);
   else animationFrame = 0;
 }
 
@@ -184,6 +233,7 @@ function farmAt(clientX, clientY) {
   clicks += 1;
   playMeow();
   sparks.push({ x, y: Math.max(12, y), start: performance.now(), seed: Math.random() * 9 });
+  coins.push({ x, y: Math.max(12, y), start: performance.now(), seed: Math.random() * 9 });
   if (!animationFrame) animationFrame = requestAnimationFrame(draw);
 
   if (clicks >= revealAt) {
@@ -203,6 +253,12 @@ function showCat() {
 }
 
 
+canvas.addEventListener("pointermove", (event) => {
+  const rect = canvas.getBoundingClientRect();
+  pointer = { x: event.clientX - rect.left, y: event.clientY - rect.top, touch: event.pointerType === "touch" };
+  if (!animationFrame) draw();
+});
+canvas.addEventListener("pointerleave", () => { pointer = null; if (!animationFrame) draw(); });
 canvas.addEventListener("pointerdown", (event) => farmAt(event.clientX, event.clientY));
 canvas.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.key === " ") {
