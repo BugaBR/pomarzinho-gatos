@@ -13,8 +13,8 @@ const tradeButton = document.querySelector("#trade-button");
 const unit = 12;
 const treeSlots = 14;
 const cats = ["Mimi", "Amora", "Nino", "Pipoca", "Chispa"];
-const TOKEN_CA = "EpRsScVBnCHvVKrzo2NrV9SfzQ1yj3Kh7cA1LDB1pump";
-const PUMP_URL = "https://pump.fun/coin/EpRsScVBnCHvVKrzo2NrV9SfzQ1yj3Kh7cA1LDB1pump";
+const TOKEN_CA = "aJSXaXwSjGJ5i5a2aw8nX7Y92bPFTA5MCAE2UrvKwyw";
+const TRADE_URL = "https://jup.ag/tokens/aJSXaXwSjGJ5i5a2aw8nX7Y92bPFTA5MCAE2UrvKwyw";
 let width = 0;
 let height = 0;
 let scale = 1;
@@ -32,7 +32,7 @@ catMark.src = "assets/cat-silhouette.png";
 tokenCa.value = TOKEN_CA;
 tokenCa.readOnly = true;
 copyButton.disabled = !TOKEN_CA;
-tradeButton.disabled = !TOKEN_CA || !PUMP_URL;
+tradeButton.disabled = !TOKEN_CA || !TRADE_URL;
 
 function block(x, y, w, h, color, outline = true) {
   ctx.fillStyle = color;
@@ -271,7 +271,7 @@ canvas.addEventListener("keydown", (event) => {
   }
 });
 tradeButton.addEventListener("click", () => {
-  if (PUMP_URL) window.open(PUMP_URL, "_blank", "noopener,noreferrer");
+  if (TRADE_URL) window.open(TRADE_URL, "_blank", "noopener,noreferrer");
 });
 copyButton.addEventListener("click", async () => {
   if (!tokenCa.value) return;
